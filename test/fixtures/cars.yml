@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  is_pink: false
+  latitude: MyString
+  longitude: MyString
+  address: MyString
+
+two:
+  name: MyString
+  is_pink: false
+  latitude: MyString
+  longitude: MyString
+  address: MyString

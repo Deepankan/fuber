@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Trip</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Total Distance</th>
+      <th>Price</th>
+      <th>Car Name </th>
+      <th>Is Pink </th>
+     
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trip.each do |trip| %>
+      <tr>
+        <td><%= trip.start_time.strftime("%H:%M:%S %p") %></td>
+        <td><%= trip.end_time.strftime("%H:%M:%S %p") %></td>
+        <td><%= trip.distance %></td>
+        <td><%= trip.price %></td>
+        <td><%= trip.car.name%></td>
+        <td><%= trip.car.is_pink ? "True" : "False" %></td>
+       
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: fuber
+  port: 5432
+  username: postgres
+  password: root
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: fuber
+  port: 5432 
+  username: postgres
+  password: root
+  #host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: fuber
+  port: 5432 
+  username: postgres 
+  password: root
