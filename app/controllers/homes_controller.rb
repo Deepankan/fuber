@@ -2,8 +2,7 @@ class HomesController < ApplicationController
   def index
 
    @car  = Car.where(status: false)
-   
-   @car_req = @car.map{|h| {lat: h.latitude, lng: h.longitude, infowindow: "I am available", width: 32, height: 32}}
+   @car_req = @car.map{|h| {lat: h.latitude, lng: h.longitude, infowindow: "I am available"}}
    
    @car_req = @car_req.to_json.html_safe
 
@@ -23,10 +22,12 @@ class HomesController < ApplicationController
     if @detail.present?
     temp = @detail.sort_by{|h| h[:diff]}
     car_req = [] << Car.find_by_id(temp.first[:id])
-    car_req = car_req.map{|h| {lat: h.latitude, lng: h.longitude, infowindow: "I am available", width: 32, height: 32}}
+    car_req = car_req.map{|h| {lat: h.latitude, lng: h.longitude, infowindow: "I am available"}}
     @car_req = car_req.to_json.html_safe
     @car_id =  temp.first[:id]
     @distance =  temp.first[:diff]
+    @latitude = end_cordinate[0]
+    @longitude = end_cordinate[1]
     else
       flash[:error] = "No Car available..."
       redirect_to :back
@@ -35,7 +36,8 @@ class HomesController < ApplicationController
 
   def start_trip
   	@car = Car.find_by_id(params[:car_id])
-    @car.update(status: true)
+
+    @car.update(status: true, latitude: params[:latitude], longitude: params[:longitude])
     distance = params[:distance].to_f * 1.60934
     @car.trips.create(start_time: Time.now, distance: distance)
     @car_id = params[:car_id]

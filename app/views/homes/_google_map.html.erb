@@ -32,7 +32,9 @@ $('#start_trip').click(function(){
           type : 'GET',
           url : "/homes/start_trip",
           data: {car_id: '<%= @car_id%>',
-                 distance: '<%= @distance%>'  },
+                 distance: '<%= @distance%>',
+                 latitude: '<%= @latitude%>',
+                 longitude: '<%= @longitude%>'  },
          
             success : function(data) {
             
